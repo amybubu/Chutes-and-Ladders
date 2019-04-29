@@ -1,1 +1,104 @@
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
+import java.io.File;
 
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.Timer;
+
+public class Driver extends JPanel implements ActionListener, MouseListener, MouseMotionListener, KeyListener{
+	
+	JFrame f;
+	
+	public Driver() {
+		f = new JFrame();
+		f.setSize(128, 128);
+		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		f.getContentPane().setBackground(Color.black);
+		f.setResizable(false);
+		f.setLayout(null);
+		
+		String src = new File("").getAbsolutePath()+"/src/";
+		
+		f.addMouseListener(this);
+		f.addKeyListener(this);
+		f.addMouseMotionListener(this);
+		
+		t = new Timer(16, this);
+		t.start();
+		f.setVisible(true);
+		
+	}
+	Timer t;
+	
+	
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Driver d = new Driver();
+	}
+	
+	
+	@Override
+	public void keyPressed(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void keyReleased(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void keyTyped(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void mouseDragged(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void mouseMoved(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void mouseClicked(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void mouseEntered(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void mouseExited(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void mousePressed(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void mouseReleased(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

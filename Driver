@@ -18,8 +18,10 @@ import javax.swing.Timer;
 
 public class Driver extends JPanel implements ActionListener, MouseListener, MouseMotionListener, KeyListener{
 	
+	public GameScreen game;
+	
 	JButton startButton = new JButton("Start");
-	String startB = "start.gif";
+	String startB = "StartButton1.gif";
 	
 	String start = "StartScreen1.png";
 	JLabel startScreen;
@@ -43,13 +45,12 @@ public class Driver extends JPanel implements ActionListener, MouseListener, Mou
 		
 		ImageIcon backg = new ImageIcon(src+startB);
 		startButton = new JButton(backg);
-		startButton.setBounds(160,640,160,80);
 		
 		//start button setup
-		startButton.setBounds(160, 640, 160, 80);
+		startButton.setBounds(600,800,200,100);
 		f.add(startButton);
 		startButton.addActionListener(this);
-		startButton.add(startButton);
+		startButton.add(startScreen);
 		startButton.setMargin(new Insets(0,0,0,0));
 		startButton.setOpaque(false);
 		startButton.setContentAreaFilled(false);
@@ -74,6 +75,21 @@ public class Driver extends JPanel implements ActionListener, MouseListener, Mou
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Driver d = new Driver();
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		if(e.getSource() == startButton){
+			System.out.println("start the game");
+			game = new GameScreen();
+			f.dispose();
+		}
+		/*
+		if(e.getSource() == quit){
+			System.exit(0);
+		}
+		*/
 	}
 	
 	
@@ -127,10 +143,6 @@ public class Driver extends JPanel implements ActionListener, MouseListener, Mou
 		// TODO Auto-generated method stub
 		
 	}
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
+
 
 }

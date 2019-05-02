@@ -1,0 +1,80 @@
+import java.awt.Rectangle;
+import java.io.File;
+
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+
+public class Character {
+	private int x, y;
+	private int vx, vy;
+	private int h, w;
+	private int space;
+	private JLabel img;
+	
+	public Character(String fname, int x, int y, int vx, int vy) {
+		String src = new File("").getAbsolutePath()+"/src/";
+		ImageIcon charIcon = new ImageIcon(src+fname);
+		//connect file to img
+		img = new JLabel(charIcon);
+		img.setBounds(x, y, w, h);
+	}
+	
+	public JLabel getImg(){
+		return img;
+	}
+	
+	public int getX(){
+		return x;
+	}
+	
+	public int getY(){
+		return y;
+	}
+	
+	public int getW(){
+		return w;
+	}
+	
+	public int getH(){
+		return h;
+	}
+	
+	public void setX(int newX){
+		x = newX;
+	}
+
+	public void setY(int newY){
+		y = newY;
+	}
+	
+	public void moveUp(){
+		y -= 40;
+		img.setBounds(x, y, w, h);
+	}
+	
+	public void moveDown(){
+		y+=40;
+		img.setBounds(x, y, w, h);
+	}
+	
+	public void moveLeft(){
+		x-=40;
+		img.setBounds(x, y, w, h);
+	}
+	
+	public void moveRight(){
+		x+=40;
+		img.setBounds(x, y, w, h);
+	}
+	
+	public void resetPos(){
+		x = 600/2-w;
+		y= 500;
+	}
+	
+	public Rectangle getRect(){
+		Rectangle c = new Rectangle();
+		c.setBounds(x, y, w, h);
+		return c;
+	}
+}

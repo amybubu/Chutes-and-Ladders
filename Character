@@ -6,15 +6,21 @@ import javax.swing.JLabel;
 
 public class Character {
 	private int x, y;
-	private int vx, vy;
 	private int h, w;
-	private int space;
 	private JLabel img;
+	private int space;
 	
-	public Character(String fname, int x, int y, int vx, int vy) {
+	public Character(String fname, int w, int h, int x, int y) {
 		String src = new File("").getAbsolutePath()+"/src/";
 		ImageIcon charIcon = new ImageIcon(src+fname);
 		//connect file to img
+		
+		this.x = x;
+		this.y = y;
+		this.w = w;
+		this.h = h;
+		
+
 		img = new JLabel(charIcon);
 		img.setBounds(x, y, w, h);
 	}
@@ -45,6 +51,14 @@ public class Character {
 
 	public void setY(int newY){
 		y = newY;
+	}
+	
+	public int getSpace(){
+		return space;
+	}
+	
+	public void setSpace(int newSpace){
+		space = newSpace;
 	}
 	
 	public void moveUp(){

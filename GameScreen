@@ -1,154 +1,139 @@
 	import java.awt.Color;
-	import java.awt.Insets;
-	import java.awt.event.ActionEvent;
-	import java.awt.event.ActionListener;
-	import java.awt.event.KeyEvent;
-	import java.awt.event.KeyListener;
-	import java.awt.event.MouseEvent;
-	import java.awt.event.MouseListener;
-	import java.awt.event.MouseMotionListener;
-	import java.io.File;
+import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
+import java.io.File;
 
-	import javax.swing.ImageIcon;
-	import javax.swing.JButton;
-	import javax.swing.JFrame;
-	import javax.swing.JLabel;
-	import javax.swing.JPanel;
-	import javax.swing.Timer;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.Timer;
 
+public class GameScreen extends JPanel implements ActionListener,
+		MouseListener, MouseMotionListener, KeyListener {
 
-	public class GameScreen extends JPanel implements ActionListener, MouseListener, MouseMotionListener, KeyListener {
+	// background
+	String screen = "Map.png";
+	JLabel background2;
 
-		//background
-		String screen = "Map.png";
-		JLabel background2;
+	JFrame f;
+	
+	BlueCharacter blue = new BlueCharacter("BlueChar.png", 50, 50, 10, 890);
+	PinkCharacter pink = new PinkCharacter("PinkChar.png", 50, 50, 55, 890);
+	PurpleCharacter purple = new PurpleCharacter("PurpleChar.png", 50, 50, 10, 935);
+	YellowCharacter yellow = new YellowCharacter("YellowChar.png", 50, 50, 55, 935);
 
-		JFrame f;
+	public GameScreen() {
+		f = new JFrame();
+		f.setSize(1000, 1029);
+		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		f.getContentPane().setBackground(Color.black);
+		f.setResizable(false);
+		f.setLayout(null);
+
+		String src = new File("").getAbsolutePath() + "/src/"; // path to image
+		// setup
+		ImageIcon backscreen = new ImageIcon(src + screen);
 		
+		f.add(blue.getImg());
+		f.add(pink.getImg());
+		f.add(purple.getImg());
+		f.add(yellow.getImg());
 		
-		public GameScreen(){
-			f = new JFrame();
-			f.setSize(1000, 1029);
-			f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			f.getContentPane().setBackground(Color.black);
-			f.setResizable(false);
-			f.setLayout(null);
-			
-			String src = new File("").getAbsolutePath()+"/src/"; //path to image setup
-		
-			ImageIcon backscreen = new ImageIcon(src+screen);
-			
-			background2 = new JLabel(backscreen);
-			background2.setBounds(0, 0, 1000, 1000);
-			
-			
-			
-			f.add(background2);
-			
-			t = new Timer(16, this);
-			t.start();
-			f.setVisible(true);
+		background2 = new JLabel(backscreen);
+		background2.setBounds(0, 0, 1000, 1000);
 
-			
-			
+		f.add(background2);
 
-			}
-		Timer t;
-		
-		
-		public static void main(String[] args) {
-			// TODO Auto-generated method stub
-
-		}
-
-
-
-		@Override
-		public void actionPerformed(ActionEvent arg0) {
-			// TODO Auto-generated method stub
-				
-		}
-
-
-		@Override
-		public void mouseDragged(MouseEvent arg0) {
-			// TODO Auto-generated method stub
-			
-		}
-
-
-
-		@Override
-		public void mouseMoved(MouseEvent arg0) {
-			// TODO Auto-generated method stub
-			
-		}
-
-
-
-		@Override
-		public void keyPressed(KeyEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
-
-
-
-		@Override
-		public void keyReleased(KeyEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
-
-
-
-		@Override
-		public void keyTyped(KeyEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
-
-
-
-		@Override
-		public void mouseClicked(MouseEvent arg0) {
-			// TODO Auto-generated method stub
-			
-		}
-
-
-
-		@Override
-		public void mouseEntered(MouseEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
-
-
-
-		@Override
-		public void mouseExited(MouseEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
-
-
-
-		@Override
-		public void mousePressed(MouseEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
-
-
-
-		@Override
-		public void mouseReleased(MouseEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
-		
+		t = new Timer(16, this);
+		t.start();
+		f.setVisible(true);
 		
 
 	}
+	
+	public void update(){
+		
+	}
 
+	Timer t;
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		// TODO Auto-generated method stub
+		update();
+	}
+
+	@Override
+	public void mouseDragged(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void mouseMoved(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		// TODO Auto-generated method stub
+		update();
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

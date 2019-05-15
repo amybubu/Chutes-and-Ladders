@@ -1,0 +1,23 @@
+import java.io.File;
+
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+
+
+public class PinkCharacter extends Character{
+	private JLabel img;
+	private int space;
+	
+	public PinkCharacter(String fname, int w, int h, int x, int y) {
+		super(fname, w, h, x, y);
+		
+		String src = new File("").getAbsolutePath()+"/src/";
+		ImageIcon charIcon = new ImageIcon(src+fname);
+		//connect file to img
+		img = new JLabel(charIcon);
+		
+		space = 1;
+		
+		img.setBounds(x, y, w, h);
+	}
+}

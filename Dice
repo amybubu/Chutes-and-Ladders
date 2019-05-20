@@ -1,0 +1,30 @@
+import java.awt.Color;
+import java.io.File;
+
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.Timer;
+
+
+public class Dice extends JPanel{
+
+	private int x;
+	private int y;
+	private int num;
+	String dice;
+	JLabel pic;
+	JFrame f;
+	
+	public Dice(){
+		x = (int)(Math.random()*(900-100+1)+100);
+		y = (int)(Math.random()*(900-100+1)+100);
+		num = (int)(Math.random()*(7));
+	}
+	
+	public int getNum(){
+		return num;
+	}
+}
+

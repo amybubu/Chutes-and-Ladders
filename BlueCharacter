@@ -7,17 +7,28 @@ import javax.swing.JLabel;
 public class BlueCharacter extends Character{
 	private JLabel img;
 	private int space;
+	private int x,y,w,h;
 	
-	public BlueCharacter(String fname, int w, int h, int x, int y) {
-		super(fname, w, h, x, y);
+	public BlueCharacter(String fname, int w, int h, int x, int y, int space) {
+		super(fname, w, h, x ,y, space);
 		
 		String src = new File("").getAbsolutePath()+"/src/";
 		ImageIcon charIcon = new ImageIcon(src+fname);
 		//connect file to img
 		img = new JLabel(charIcon);
 		
-		space = 1;
+		this.x = x;
+		this.y = y;
+		this.w = w;
+		this.h = h;
+		this.space = space;
+		
+		x = 10;
+		y = 890;
 		
 		img.setBounds(x, y, w, h);
 	}
+	
+
+	
 }

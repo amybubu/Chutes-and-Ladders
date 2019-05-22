@@ -32,7 +32,7 @@ public class Driver extends JPanel implements ActionListener, MouseListener, Mou
 	
 	public Driver() {
 		f = new JFrame();
-		f.setSize(1000, 1029);
+		f.setSize(1006, 1029);
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.getContentPane().setBackground(Color.black);
 		f.setResizable(false);
@@ -47,12 +47,12 @@ public class Driver extends JPanel implements ActionListener, MouseListener, Mou
 		startButton = new JButton(backg);
 		
 		//start button setup
-		startButton.setBounds(600,800,200,100);
+		startButton.setBounds(600,800,210,100);
 		f.add(startButton);
 		startButton.addActionListener(this);
 		startButton.add(startScreen);
 		startButton.setMargin(new Insets(0,0,0,0));
-		startButton.setOpaque(false);
+		startButton.setOpaque(false);  
 		startButton.setContentAreaFilled(false);
 		startButton.setBorderPainted(false);
 		startButton.setBorder(null);
@@ -85,6 +85,7 @@ public class Driver extends JPanel implements ActionListener, MouseListener, Mou
 			game = new GameScreen();
 			f.dispose();
 		}
+		
 		/*
 		if(e.getSource() == quit){
 			System.exit(0);
@@ -96,7 +97,7 @@ public class Driver extends JPanel implements ActionListener, MouseListener, Mou
 	@Override
 	public void keyPressed(KeyEvent arg0) {
 		// TODO Auto-generated method stub
-		
+
 	}
 	@Override
 	public void keyReleased(KeyEvent arg0) {

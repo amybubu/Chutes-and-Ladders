@@ -14,17 +14,19 @@ public class Dice extends JPanel{
 	private int y;
 	private int num;
 	String dice;
-	JLabel pic;
 	JFrame f;
 	
 	public Dice(){
 		x = (int)(Math.random()*(900-100+1)+100);
 		y = (int)(Math.random()*(900-100+1)+100);
-		num = (int)(Math.random()*(7));
+	}
+	
+	public int rollDice(){
+		num = (int)(Math.random()*(7 - 1)+ 1);
+		return num;
 	}
 	
 	public int getNum(){
 		return num;
 	}
 }
-

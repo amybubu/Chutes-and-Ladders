@@ -25,15 +25,18 @@ public class GameScreen extends JPanel implements ActionListener,
 	JLabel background2;
 
 	JFrame f;
-	
-	String[] diePics = {"Dice1.png", "Dice2.png", "Dice3.png", "Dice4.png", "Dice5.png", "Dice6.png"};
-	
+
+	String[] diePics = { "Dice1.png", "Dice2.png", "Dice3.png", "Dice4.png",
+			"Dice5.png", "Dice6.png" };
+
 	int turn = 1;
-	
+
 	BlueCharacter blue = new BlueCharacter("BlueChar.png", 50, 50, 10, 890, 1);
 	PinkCharacter pink = new PinkCharacter("PinkChar.png", 50, 50, 55, 890, 1);
-	PurpleCharacter purple = new PurpleCharacter("PurpleChar.png", 50, 50, 10, 935, 1);
-	YellowCharacter yellow = new YellowCharacter("YellowChar.png", 50, 50, 55, 935, 1);
+	PurpleCharacter purple = new PurpleCharacter("PurpleChar.png", 50, 50, 10,
+			935, 1);
+	YellowCharacter yellow = new YellowCharacter("YellowChar.png", 50, 50, 55,
+			935, 1);
 	Dice die = new Dice();
 
 	public GameScreen() {
@@ -47,36 +50,36 @@ public class GameScreen extends JPanel implements ActionListener,
 		String src = new File("").getAbsolutePath() + "/src/"; // path to image
 		// setup
 		ImageIcon backscreen = new ImageIcon(src + screen);
-		
+
 		f.add(blue.getImg());
 		f.add(pink.getImg());
 		f.add(purple.getImg());
 		f.add(yellow.getImg());
-		
+
 		background2 = new JLabel(backscreen);
 		background2.setBounds(0, 0, 1000, 1000);
-		
+
 		f.addMouseListener(this);
 		f.addKeyListener(this);
 		f.addMouseMotionListener(this);
-		
+
 		f.add(background2);
 
 		t = new Timer(16, this);
 		t.start();
 		f.setVisible(true);
-		
 
 	}
-	public void update(){
-		
+
+	public void update() {
+
 	}
 
 	Timer t;
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -100,31 +103,85 @@ public class GameScreen extends JPanel implements ActionListener,
 	@Override
 	public void keyPressed(KeyEvent arg0) {
 		// TODO Auto-generated method stub
-		if(arg0.getKeyCode() == KeyEvent.VK_SPACE){
+		if (arg0.getKeyCode() == KeyEvent.VK_SPACE) {
 			die.rollDice();
-			if(turn % 4 == 1){
-				for(int i = 0; i < die.getNum(); i ++){
-					blue.moveRight();
+			
+			//moves the blue character when it is your turn
+			if (blue.getSpace() / 10 % 2 == 0) {
+				if (turn % 4 == 1) {
+					for (int i = 0; i < die.getNum(); i++) {
+						blue.moveRight();
+						blue.addSpace();
+					}
+				}
+			} else {
+				if (turn % 4 == 1) {
+					for (int i = 0; i < die.getNum(); i++) {
+						blue.moveLeft();
+						blue.addSpace();
+					}
 				}
 			}
-			if(turn % 4 == 2){
-				for(int i = 0; i < die.getNum(); i ++){
-					pink.moveRight();
+			
+			//moves the pink character when it is your turn
+			if (pink.getSpace() / 10 % 2 == 0) {
+				if (turn % 4 == 2) {
+					for (int i = 0; i < die.getNum(); i++) {
+						pink.moveRight();
+						pink.addSpace();
+					}
+				}
+			} else {
+				if (turn % 4 == 2) {
+					for (int i = 0; i < die.getNum(); i++) {
+						pink.moveLeft();
+						pink.addSpace();
+					}
 				}
 			}
-			if(turn % 4 == 3){
-				for(int i = 0; i < die.getNum(); i ++){
-					purple.moveRight();
+			
+			//moves the purple character when it is your turn
+			if (purple.getSpace() / 10 % 2 == 0) {
+				if (turn % 4 == 3) {
+					for (int i = 0; i < die.getNum(); i++) {
+						purple.moveRight();
+						purple.addSpace();
+					}
+				}
+			} else {
+				if (turn % 4 == 3) {
+					for (int i = 0; i < die.getNum(); i++) {
+						purple.moveLeft();
+						purple.addSpace();
+					}
 				}
 			}
-			if(turn % 4 == 0){
-				for(int i = 0; i < die.getNum(); i ++){
-					yellow.moveRight();
+			
+			//moves the yellow character when it is your turn
+			if (yellow.getSpace() / 10 % 2 == 0) {
+				if (turn % 4 == 0) {
+					for (int i = 0; i < die.getNum(); i++) {
+						yellow.moveRight();
+						yellow.addSpace();
+					}
+				}
+			} else {
+				if (turn % 4 == 0) {
+					for (int i = 0; i < die.getNum(); i++) {
+						yellow.moveLeft();
+						yellow.addSpace();
+					}
 				}
 			}
+
+			System.out.println("Blue Space:" + blue.getSpace());
+			System.out.println("Pink Space:" + pink.getSpace());
+			System.out.println("Purple Space:" + purple.getSpace());
+			System.out.println("Yellow Space:" + yellow.getSpace());
+			System.out.println("====================================================");
 			turn++;
 		}
-		
+
 		update();
 	}
 

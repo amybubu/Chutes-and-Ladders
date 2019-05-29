@@ -112,6 +112,20 @@ public class GameScreen extends JPanel implements ActionListener,
 					for (int i = 0; i < die.getNum(); i++) {
 						blue.moveRight();
 						blue.addSpace();
+						if(blue.getX() > 1000){
+							blue.setY(blue.getY() - 100);
+							for (int j = 0; j < (blue.getSpace()-10) + (blue.getSpace()-10); j++) {
+								blue.moveLeft();
+							}
+						}
+						
+						if(blue.getX() < 0){
+							blue.setY(blue.getY() - 100);
+							for (int j = 0; j < (blue.getSpace() - 10) + (blue.getSpace()-10); j++) {
+								blue.moveRight();
+							}
+							blue.addSpace();
+						}
 					}
 				}
 			} else {

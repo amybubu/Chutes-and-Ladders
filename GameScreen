@@ -51,7 +51,14 @@ public class GameScreen extends JPanel implements ActionListener,
 		String src = new File("").getAbsolutePath() + "/src/"; // path to image
 		// setup
 		ImageIcon backscreen = new ImageIcon(src + screen);
-
+		
+		die.rollDice();
+		ImageIcon dieP = new ImageIcon(src+diePics[die.getNum() - 1]);
+		diePicture = new JLabel(dieP);
+		diePicture.setBounds(die.getX(),die.getY(),100,100);
+		f.add(diePicture);
+		System.out.println(die.getNum());
+		
 		f.add(blue.getImg());
 		f.add(pink.getImg());
 		f.add(purple.getImg());

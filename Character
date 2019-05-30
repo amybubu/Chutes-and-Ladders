@@ -13,6 +13,16 @@ public class Character {
 	
 	//AffineTransform tx = AffineTransform.getTranslateInstance(x,y);
 	
+	/**
+	 * This constructor takes in position and image dimensions.
+	 * @param fname
+	 * @param w
+	 * @param h
+	 * @param x
+	 * @param y
+	 * @param space
+	 *
+	 */
 	public Character(String fname, int w, int h, int x, int y, int space) {
 		//tx = AffineTransform.getTranslateInstance(x,y);
 		String src = new File("").getAbsolutePath()+"/src/";
@@ -28,6 +38,10 @@ public class Character {
 		img.setBounds(x, y, w, h);
 	}
 	
+	/**
+	 * These methods are intended to code for each characters movements.
+	 * @return
+	 */
 	public JLabel getImg(){
 		return img;
 	}
@@ -69,25 +83,33 @@ public class Character {
 	}
 	
 	public void moveUp(){
-		y -= 80;
+		y -= 100;
 		img.setBounds(this.getX(), this.getY(), w, h);
 	}
 	
 	public void moveDown(){
-		y+=80;
+		y+=100;
 		img.setBounds(x, y, w, h);
 	}
 	
 	public void moveLeft(){
-		x-=80;
+		if(space%10==0){
+			moveUp();
+		}else{
+		
+		x-=100;
+		}
 		img.setBounds(x, y, w, h);
 	}
 	
 	public void moveRight(){
+		
+		if(space%10==0){
+			moveUp();
+		}else{
+		
 		x+=100;
-		System.out.println("x: " + this.getX());
-		System.out.println("y: " + this.getY());
-		//img.setBounds(this.getX(), this.getY(), w, h);
+		}
 		img.setBounds(x, y, w, h);
 	}
 	

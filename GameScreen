@@ -29,6 +29,7 @@ public class GameScreen extends JPanel implements ActionListener,
 
 	String[] diePics = { "Dice1.png", "Dice2.png", "Dice3.png", "Dice4.png",
 			"Dice5.png", "Dice6.png" };
+	JLabel diePicture;
 
 	int turn = 1;
 

@@ -49,6 +49,7 @@ public class GameScreen extends JPanel implements ActionListener,
 	YellowCharacter yellow = new YellowCharacter("YellowChar.png", 50, 50, 55,
 			935, 1);
 	Dice die = new Dice(diePics[0]);
+	Dice die2[] = new Dice[6];
 
 	public GameScreen() {
 		f = new JFrame();
@@ -61,12 +62,20 @@ public class GameScreen extends JPanel implements ActionListener,
 		String src = new File("").getAbsolutePath() + "/src/"; // path to image
 		// setup
 		ImageIcon backscreen = new ImageIcon(src + screen);
-		
+
 		die.rollDice();
 
-		f.add(die.getImg());
+		ImageIcon dieP = new ImageIcon(src + diePics);
+		diePicture = new JLabel(dieP);
+		diePicture.setBounds(die.getX(), die.getY(), 100, 100);
+		for (int i = 0; i < diePics.length; i++) {
+			die2[i] = new Dice(diePics[i]);
+			die2[i].setRolled(i + 1);
+			f.add(die2[i].getImg());
+		}
+
 		System.out.println(die.getNum());
-		
+
 		f.add(blue.getImg());
 		f.add(pink.getImg());
 		f.add(purple.getImg());
@@ -123,160 +132,167 @@ public class GameScreen extends JPanel implements ActionListener,
 			die.rollDice();
 			System.out.println("The Dice Landed On: " + die.getNum());
 			int temp = die.getNum();
-			
-			die.setX((int)(Math.random()*(900-100+1)+100));
-			die.setY((int)(Math.random()*(900-100+1)+100));
 
-			if(blue.getSpace()<=93){
-			//moves the blue character when it is your turn
-			if (blue.getSpace() / 10 % 2 == 0) {
-				if (turn % 4 == 1) {
-					for (int i = 0; i < die.getNum(); i++) {
-						blue.moveRight();
-						temp--;
-						if(blue.getSpace()%10==0){
-							break;
-						}
-					}
-					for (int i = 0; i < temp; i++) {
-						blue.moveLeft();
-					}
-				}
-				
-			} else {
-				if (turn % 4 == 1) {
-					for (int i = 0; i < die.getNum(); i++) {
-						blue.moveLeft();
-						temp--;
-						if(blue.getSpace()%10==0){
-							break;
-						}
-					}
-					for (int i = 0; i < temp; i++) {
-						blue.moveRight();
-					}
+			for (int i = 0; i < diePics.length; i++) {
+				die2[i].setX((int) (Math.random() * (900 - 100 + 1) + 100));
+				die2[i].setY((int) (Math.random() * (900 - 100 + 1) + 100));
+				if (die2[i].getRolled() != die.getNum()) {
+					die2[i].setX(10000);
 				}
 			}
-			}else{
+
+			// moves the blue character when it is your turn
+
+			if (blue.getSpace() <= 93) {
+				// moves the blue character when it is your turn
+				if (blue.getSpace() / 10 % 2 == 0) {
+					if (turn % 4 == 1) {
+						for (int i = 0; i < die.getNum(); i++) {
+							blue.moveRight();
+							temp--;
+							if (blue.getSpace() % 10 == 0) {
+								break;
+							}
+						}
+						for (int i = 0; i < temp; i++) {
+							blue.moveLeft();
+						}
+					}
+
+				} else {
+					if (turn % 4 == 1) {
+						for (int i = 0; i < die.getNum(); i++) {
+							blue.moveLeft();
+							temp--;
+							if (blue.getSpace() % 10 == 0) {
+								break;
+							}
+						}
+						for (int i = 0; i < temp; i++) {
+							blue.moveRight();
+						}
+					}
+				}
+			} else {
 				if (turn % 4 == 1) {
 					blue.moveWin(die.getNum());
 				}
 			}
-			
-			if(pink.getSpace()<=93){
-			//moves the pink character when it is your turn
-			if (pink.getSpace() / 10 % 2 == 0) {
-				if (turn % 4 == 2) {
-					for (int i = 0; i < die.getNum(); i++) {
-						pink.moveRight();
-						temp--;
-						if(pink.getSpace()%10==0){
-							break;
+
+			if (pink.getSpace() <= 93) {
+				// moves the pink character when it is your turn
+				if (pink.getSpace() / 10 % 2 == 0) {
+					if (turn % 4 == 2) {
+						for (int i = 0; i < die.getNum(); i++) {
+							pink.moveRight();
+							temp--;
+							if (pink.getSpace() % 10 == 0) {
+								break;
+							}
+						}
+						for (int i = 0; i < temp; i++) {
+							pink.moveLeft();
 						}
 					}
-					for (int i = 0; i < temp; i++) {
-						pink.moveLeft();
+
+				} else {
+					if (turn % 4 == 2) {
+						for (int i = 0; i < die.getNum(); i++) {
+							pink.moveLeft();
+							temp--;
+							if (pink.getSpace() % 10 == 0) {
+								break;
+							}
+						}
+						for (int i = 0; i < temp; i++) {
+							pink.moveRight();
+						}
 					}
 				}
-				
 			} else {
-				if (turn % 4 == 2) {
-					for (int i = 0; i < die.getNum(); i++) {
-						pink.moveLeft();
-						temp--;
-						if(pink.getSpace()%10==0){
-							break;
-						}
-					}
-					for (int i = 0; i < temp; i++) {
-						pink.moveRight();
-					}
-				}
-			}
-			}else{
 				if (turn % 4 == 2) {
 					pink.moveWin(die.getNum());
 				}
 			}
-			
-			if(yellow.getSpace()<=93){
-			//moves the yellow character when it is your turn
-			if (yellow.getSpace() / 10 % 2 == 0) {
-				if (turn % 4 == 3) {
-					for (int i = 0; i < die.getNum(); i++) {
-						yellow.moveRight();
-						temp--;
-						if(yellow.getSpace()%10==0){
-							break;
+
+			if (yellow.getSpace() <= 93) {
+				// moves the yellow character when it is your turn
+				if (yellow.getSpace() / 10 % 2 == 0) {
+					if (turn % 4 == 3) {
+						for (int i = 0; i < die.getNum(); i++) {
+							yellow.moveRight();
+							temp--;
+							if (yellow.getSpace() % 10 == 0) {
+								break;
+							}
+						}
+						for (int i = 0; i < temp; i++) {
+							yellow.moveLeft();
 						}
 					}
-					for (int i = 0; i < temp; i++) {
-						yellow.moveLeft();
+
+				} else {
+					if (turn % 4 == 3) {
+						for (int i = 0; i < die.getNum(); i++) {
+							yellow.moveLeft();
+							temp--;
+							if (yellow.getSpace() % 10 == 0) {
+								break;
+							}
+						}
+						for (int i = 0; i < temp; i++) {
+							yellow.moveRight();
+						}
 					}
 				}
-				
 			} else {
-				if (turn % 4 == 3) {
-					for (int i = 0; i < die.getNum(); i++) {
-						yellow.moveLeft();
-						temp--;
-						if(yellow.getSpace()%10==0){
-							break;
-						}
-					}
-					for (int i = 0; i < temp; i++) {
-						yellow.moveRight();
-					}
-				}
-			}
-			}else{
 				if (turn % 4 == 3) {
 					yellow.moveWin(die.getNum());
 				}
 			}
-			
-			if(purple.getSpace()<=93){
-			//move purple
-			if (purple.getSpace() / 10 % 2 == 0) {
-				if (turn % 4 == 0) {
-					for (int i = 0; i < die.getNum(); i++) {
-						purple.moveRight();
-						temp--;
-						if(purple.getSpace()%10==0){
-							break;
+
+			if (purple.getSpace() <= 93) {
+				// move purple
+				if (purple.getSpace() / 10 % 2 == 0) {
+					if (turn % 4 == 0) {
+						for (int i = 0; i < die.getNum(); i++) {
+							purple.moveRight();
+							temp--;
+							if (purple.getSpace() % 10 == 0) {
+								break;
+							}
+						}
+						for (int i = 0; i < temp; i++) {
+							purple.moveLeft();
 						}
 					}
-					for (int i = 0; i < temp; i++) {
-						purple.moveLeft();
+
+				} else {
+					if (turn % 4 == 0) {
+						for (int i = 0; i < die.getNum(); i++) {
+							purple.moveLeft();
+							temp--;
+							if (purple.getSpace() % 10 == 0) {
+								break;
+							}
+						}
+						for (int i = 0; i < temp; i++) {
+							purple.moveRight();
+						}
 					}
 				}
-				
 			} else {
-				if (turn % 4 == 0) {
-					for (int i = 0; i < die.getNum(); i++) {
-						purple.moveLeft();
-						temp--;
-						if(purple.getSpace()%10==0){
-							break;
-						}
-					}
-					for (int i = 0; i < temp; i++) {
-						purple.moveRight();
-					}
-				}
-			}
-			}else{
 				if (turn % 4 == 0) {
 					purple.moveWin(die.getNum());
 				}
 			}
 
-
 			System.out.println("Blue Space:" + blue.getSpace());
 			System.out.println("Pink Space:" + pink.getSpace());
 			System.out.println("Purple Space:" + purple.getSpace());
 			System.out.println("Yellow Space:" + yellow.getSpace());
-			System.out.println("====================================================");
+			System.out
+					.println("====================================================");
 			turn++;
 		}
 

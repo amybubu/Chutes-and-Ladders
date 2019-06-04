@@ -9,16 +9,34 @@ import javax.swing.Timer;
 
 
 public class Dice extends JPanel{
+	
 
+	private JLabel img;
 	private int x;
 	private int y;
 	private int num;
 	String dice;
 	JFrame f;
 	
-	public Dice(){
+	/**
+	 * int x and y will be used later to generate
+	 * a dice onto the game screen
+	 * num is used to hold the number that you get
+	 * The roll dice methods returns a number between 1 - 6
+	 * the getNum method returns the num that you rolled
+	 * This will be used later in order to add a picture of the number you rolled on
+	 * to the game screen
+	 */
+	public Dice(String fname){
+		String src = new File("").getAbsolutePath()+"/src/";
+		ImageIcon charIcon = new ImageIcon(src+fname);
+		
 		x = (int)(Math.random()*(900-100+1)+100);
 		y = (int)(Math.random()*(900-100+1)+100);
+		
+		
+		img = new JLabel(charIcon);
+		img.setBounds(x, y, 100, 100);
 	}
 	
 	public int rollDice(){
@@ -28,5 +46,22 @@ public class Dice extends JPanel{
 	
 	public int getNum(){
 		return num;
+	}
+	public int getX(){
+		return x;
+	}
+	public int getY(){
+		return y;
+	}
+	public void setX(int newX){
+		x = newX;
+		img.setBounds(x, y, 100, 100);
+	}
+	public void setY(int newY){
+		y = newY;
+		img.setBounds(x, y, 100, 100);
+	}
+	public JLabel getImg(){
+		return img;
 	}
 }

@@ -122,6 +122,23 @@ public class Character {
 		img.setBounds(x, y, w, h);
 	}
 	
+	public void moveWin(int dieNum){
+		if(space + dieNum < 100){
+			for (int j=0; j<dieNum; j++){
+				moveLeft();
+				addSpace();
+			}
+		}else{
+			int temp = 100 - space;
+			if(temp == dieNum){
+				for (int j=0; j<temp; j++){
+					moveLeft();
+					addSpace();
+				}
+			}
+		}
+	}
+	
 	public void resetPos(){
 		x = 600/2-w;
 		y= 500;

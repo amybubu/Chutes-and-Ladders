@@ -12,7 +12,6 @@ public class Character {
 	private int h, w;
 	private JLabel img;
 	private int space;
-	Dice die = new Dice();
 
 	/**
 	 * Character class/classes is used to create characters
@@ -67,10 +66,12 @@ public class Character {
 	
 	public void setX(int newX){
 		x = newX;
+		img.setBounds(x, y, w, h);
 	}
 
 	public void setY(int newY){
 		y = newY;
+		img.setBounds(x, y, w, h);
 	}
 	
 	public int getSpace(){

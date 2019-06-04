@@ -94,11 +94,6 @@ public class Character {
 		img.setBounds(this.getX(), this.getY(), w, h);
 	}
 	
-	public void moveDown(){
-		y+=80;
-		img.setBounds(x, y, w, h);
-	}
-	
 	public void moveLeft(){
 		if(space % 10 == 0){
 			moveUp();
@@ -121,7 +116,7 @@ public class Character {
 		}
 		img.setBounds(x, y, w, h);
 	}
-	
+
 	public void moveWin(int dieNum){
 		if(space + dieNum < 100){
 			for (int j=0; j<dieNum; j++){
@@ -135,16 +130,5 @@ public class Character {
 				}
 			}
 		}
-	}
-	
-	public void resetPos(){
-		x = 600/2-w;
-		y= 500;
-	}
-	
-	public Rectangle getRect(){
-		Rectangle c = new Rectangle();
-		c.setBounds(x, y, w, h);
-		return c;
 	}
 }

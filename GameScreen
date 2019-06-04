@@ -1,4 +1,13 @@
-    
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Insets;
@@ -39,7 +48,7 @@ public class GameScreen extends JPanel implements ActionListener,
 			935, 1);
 	YellowCharacter yellow = new YellowCharacter("YellowChar.png", 50, 50, 55,
 			935, 1);
-	Dice die = new Dice();
+	Dice die = new Dice(diePics[0]);
 
 	public GameScreen() {
 		f = new JFrame();
@@ -54,10 +63,8 @@ public class GameScreen extends JPanel implements ActionListener,
 		ImageIcon backscreen = new ImageIcon(src + screen);
 		
 		die.rollDice();
-		ImageIcon dieP = new ImageIcon(src+diePics[die.getNum() - 1]);
-		diePicture = new JLabel(dieP);
-		diePicture.setBounds(die.getX(),die.getY(),100,100);
-		f.add(diePicture);
+
+		f.add(die.getImg());
 		System.out.println(die.getNum());
 		
 		f.add(blue.getImg());
@@ -117,12 +124,15 @@ public class GameScreen extends JPanel implements ActionListener,
 			System.out.println("The Dice Landed On: " + die.getNum());
 			int temp = die.getNum();
 			
+			die.setX((int)(Math.random()*(900-100+1)+100));
+			die.setY((int)(Math.random()*(900-100+1)+100));
+
 			//moves the blue character when it is your turn
+			
 			if (blue.getSpace() / 10 % 2 == 0) {
 				if (turn % 4 == 1) {
 					for (int i = 0; i < die.getNum(); i++) {
 						blue.moveRight();
-						blue.addSpace();
 						temp--;
 						if(blue.getSpace()%10==0){
 							break;
@@ -130,7 +140,6 @@ public class GameScreen extends JPanel implements ActionListener,
 					}
 					for (int i = 0; i < temp; i++) {
 						blue.moveLeft();
-						blue.addSpace();
 					}
 				}
 				
@@ -138,7 +147,6 @@ public class GameScreen extends JPanel implements ActionListener,
 				if (turn % 4 == 1) {
 					for (int i = 0; i < die.getNum(); i++) {
 						blue.moveLeft();
-						blue.addSpace();
 						temp--;
 						if(blue.getSpace()%10==0){
 							break;
@@ -146,7 +154,6 @@ public class GameScreen extends JPanel implements ActionListener,
 					}
 					for (int i = 0; i < temp; i++) {
 						blue.moveRight();
-						blue.addSpace();
 					}
 				}
 			}
@@ -157,7 +164,6 @@ public class GameScreen extends JPanel implements ActionListener,
 				if (turn % 4 == 2) {
 					for (int i = 0; i < die.getNum(); i++) {
 						pink.moveRight();
-						pink.addSpace();
 						temp--;
 						if(pink.getSpace()%10==0){
 							break;
@@ -165,7 +171,6 @@ public class GameScreen extends JPanel implements ActionListener,
 					}
 					for (int i = 0; i < temp; i++) {
 						pink.moveLeft();
-						pink.addSpace();
 					}
 				}
 				
@@ -173,7 +178,6 @@ public class GameScreen extends JPanel implements ActionListener,
 				if (turn % 4 == 2) {
 					for (int i = 0; i < die.getNum(); i++) {
 						pink.moveLeft();
-						pink.addSpace();
 						temp--;
 						if(pink.getSpace()%10==0){
 							break;
@@ -181,7 +185,6 @@ public class GameScreen extends JPanel implements ActionListener,
 					}
 					for (int i = 0; i < temp; i++) {
 						pink.moveRight();
-						pink.addSpace();
 					}
 				}
 			}
@@ -191,7 +194,6 @@ public class GameScreen extends JPanel implements ActionListener,
 				if (turn % 4 == 3) {
 					for (int i = 0; i < die.getNum(); i++) {
 						yellow.moveRight();
-						yellow.addSpace();
 						temp--;
 						if(yellow.getSpace()%10==0){
 							break;
@@ -199,7 +201,6 @@ public class GameScreen extends JPanel implements ActionListener,
 					}
 					for (int i = 0; i < temp; i++) {
 						yellow.moveLeft();
-						yellow.addSpace();
 					}
 				}
 				
@@ -207,7 +208,6 @@ public class GameScreen extends JPanel implements ActionListener,
 				if (turn % 4 == 3) {
 					for (int i = 0; i < die.getNum(); i++) {
 						yellow.moveLeft();
-						yellow.addSpace();
 						temp--;
 						if(yellow.getSpace()%10==0){
 							break;
@@ -215,7 +215,6 @@ public class GameScreen extends JPanel implements ActionListener,
 					}
 					for (int i = 0; i < temp; i++) {
 						yellow.moveRight();
-						yellow.addSpace();
 					}
 				}
 			}
@@ -225,7 +224,6 @@ public class GameScreen extends JPanel implements ActionListener,
 				if (turn % 4 == 0) {
 					for (int i = 0; i < die.getNum(); i++) {
 						purple.moveRight();
-						purple.addSpace();
 						temp--;
 						if(purple.getSpace()%10==0){
 							break;
@@ -233,7 +231,6 @@ public class GameScreen extends JPanel implements ActionListener,
 					}
 					for (int i = 0; i < temp; i++) {
 						purple.moveLeft();
-						purple.addSpace();
 					}
 				}
 				
@@ -241,7 +238,6 @@ public class GameScreen extends JPanel implements ActionListener,
 				if (turn % 4 == 0) {
 					for (int i = 0; i < die.getNum(); i++) {
 						purple.moveLeft();
-						purple.addSpace();
 						temp--;
 						if(purple.getSpace()%10==0){
 							break;
@@ -249,11 +245,10 @@ public class GameScreen extends JPanel implements ActionListener,
 					}
 					for (int i = 0; i < temp; i++) {
 						purple.moveRight();
-						purple.addSpace();
 					}
 				}
 			}
-			
+
 
 			System.out.println("Blue Space:" + blue.getSpace());
 			System.out.println("Pink Space:" + pink.getSpace());

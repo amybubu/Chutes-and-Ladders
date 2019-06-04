@@ -17,6 +17,7 @@ public class Dice extends JPanel{
 	private int num;
 	String dice;
 	JFrame f;
+	private int rolled = 0;
 	
 	/**
 	 * int x and y will be used later to generate
@@ -52,6 +53,12 @@ public class Dice extends JPanel{
 	}
 	public int getY(){
 		return y;
+	}
+	public int getRolled(){
+		return rolled;
+	}
+	public void setRolled(int newRolled){
+		rolled = newRolled;
 	}
 	public void setX(int newX){
 		x = newX;

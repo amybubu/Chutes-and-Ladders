@@ -1,0 +1,10 @@
+
+public class Coordinate {
+	int from;
+	int to;
+	
+	public Coordinate(int f, int t){
+		from = f;
+		to = t;
+	}
+}

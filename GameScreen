@@ -372,40 +372,45 @@ public class GameScreen extends JPanel implements ActionListener,
 				} else {
 					if (c.from == blue.getSpace()) {
 						for (int i = c.from; i > c.to; i--) {
-							if (blue.getSpace() / 10 % 2 == 0) {
+							if (blue.getSpace() / 10 % 2 == 0 && blue.getSpace()%10!=0 || blue.getSpace() / 10 % 2 == 1 && blue.getSpace()%10==0) {
 								blue.moveLeftD();
 							} else {
 								blue.moveRightD();
 							}
 						}
+				
 					}
 					if (c.from == pink.getSpace()) {
 						for (int i = c.from; i > c.to; i--) {
-							if (pink.getSpace() / 10 % 2 == 0) {
+							if (pink.getSpace() / 10 % 2 == 0 && pink.getSpace()%10!=0 || pink.getSpace() / 10 % 2 == 1 && pink.getSpace()%10==0) {
 								pink.moveLeftD();
 							} else {
 								pink.moveRightD();
 							}
 						}
+				
 					}
 					if (c.from == yellow.getSpace()) {
 						for (int i = c.from; i > c.to; i--) {
-							if (yellow.getSpace() / 10 % 2 == 0) {
+							if (yellow.getSpace() / 10 % 2 == 0 && yellow.getSpace()%10!=0 || yellow.getSpace() / 10 % 2 == 1 && yellow.getSpace()%10==0) {
 								yellow.moveLeftD();
 							} else {
 								yellow.moveRightD();
 							}
 						}
+	
 					}
 					if (c.from == purple.getSpace()) {
 						for (int i = c.from; i > c.to; i--) {
-							if (purple.getSpace() / 10 % 2 == 0) {
+			 				if (purple.getSpace() / 10 % 2 == 0 && purple.getSpace()%10!=0 || purple.getSpace() / 10 % 2 == 1 && purple.getSpace()%10==0) {
 								purple.moveLeftD();
 							} else {
 								purple.moveRightD();
 							}
 						}
+		
 					}
+
 
 				}
 

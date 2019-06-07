@@ -8,15 +8,35 @@ public class PinkCharacter extends Character{
 	private JLabel img;
 	private int space;
 	private int x,y,w,h;
+	/**
+	 * constructor with w,h,x, and space
+	 * int w : PinkChracter is centered w position
+	 * int h:  PinkChracter is centered h position
+	 * int x:  PinkChracter is centered x position
+	 * int y:  PinkChracter is centered y position
+	 * int space : PinkChracter is centered space position 
+	 */
 	
 	public PinkCharacter(String fname, int w, int h, int x, int y, int space) {
+		
+		/**
+		* call parent's constructor with w,h,x,y, and space 
+		*/
+		 
 		super(fname, w, h, x, y, space);
 		
 		String src = new File("").getAbsolutePath()+"/src/";
 		ImageIcon charIcon = new ImageIcon(src+fname);
 		//connect file to img
 		img = new JLabel(charIcon);
-		
+		/**
+		 * x: variable for PinkChracter x position 
+		 * y: variable for PinkChracter y position 
+		 * w: variable for PinkChracter w position
+		 * h: variable for PinkChracter h position
+		 * space: variable for PinkChracter space position
+		 */
+		 
 		this.x = x;
 		this.y = y;
 		this.w = w;

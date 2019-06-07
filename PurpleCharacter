@@ -9,6 +9,10 @@ public class PurpleCharacter extends Character{
 	private int space;
 	private int x,y,w,h;
 	
+	/**
+	 * constructor for purple char
+	 */
+
 	public PurpleCharacter(String fname, int w, int h,int x, int y, int space) {
 		super(fname, w, h,x ,y, space );
 		

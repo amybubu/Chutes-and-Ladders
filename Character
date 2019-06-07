@@ -47,37 +47,77 @@ public class Character {
 	public JLabel getImg(){
 		return img;
 	}
-	
+	/**
+	 * All methods after this one are
+	 * getters and setters for the character classes
+	 * @return
+	 */
+
 	public int getX(){
 		return x;
 	}
-	
+	/**
+	 * All methods after this one are
+	 * getters and setters for the character classes
+	 * @return
+	 */
+
 	public int getY(){
 		return y;
 	}
-	
+	/**
+	 * All methods after this one are
+	 * getters and setters for the character classes
+	 * @return
+	 */
+
 	public int getW(){
 		return w;
 	}
-	
+	/**
+	 * All methods after this one are
+	 * getters and setters for the character classes
+	 * @return
+	 */
+
 	public int getH(){
 		return h;
 	}
-	
+	/**
+	 * All methods after this one are
+	 * getters and setters for the character classes
+	 * @return
+	 */
+
 	public void setX(int newX){
 		x = newX;
 		img.setBounds(x, y, w, h);
 	}
+	/**
+	 * All methods after this one are
+	 * getters and setters for the character classes
+	 * @return
+	 */
 
 	public void setY(int newY){
 		y = newY;
 		img.setBounds(x, y, w, h);
 	}
-	
+	/**
+	 * All methods after this one are
+	 * getters and setters for the character classes
+	 * @return
+	 */
+
 	public int getSpace(){
 		return space;
 	}
-	
+	/**
+	 * All methods after this one are
+	 * getters and setters for the character classes
+	 * @return
+	 */
+
 	public void setSpace(int newSpace){
 		space = newSpace;
 	}
@@ -93,12 +133,20 @@ public class Character {
 		y -= 100;
 		img.setBounds(this.getX(), this.getY(), w, h);
 	}
-	
+		/**
+	 * All methods after this one are
+	 * methods for the movement of the characters
+	 * Space variable/ method is used to keep track of where the character should be
+	 */
 	public void moveDown(){
 		y+=100; 
 		img.setBounds(this.getX(), this.getY(), w, h);
 	}
-	
+		/**
+	 * All methods after this one are
+	 * methods for the movement of the characters
+	 * Space variable/ method is used to keep track of where the character should be
+	 */
 	public void moveLeft(){
 		if(space % 10 == 0){
 			moveUp();
@@ -109,7 +157,11 @@ public class Character {
 		}
 		img.setBounds(this.getX(), this.getY(), w, h);
 	}
-	
+		/**
+	 * All methods after this one are
+	 * methods for the movement of the characters
+	 * Space variable/ method is used to keep track of where the character should be
+	 */
 	public void moveRight(){
 		if(space % 10 == 0){
 			moveUp();
@@ -121,7 +173,11 @@ public class Character {
 		}
 		img.setBounds(this.getX(), this.getY(), w, h);
 	}
-	
+		/**
+	 * All methods after this one are
+	 * methods for the movement of the characters
+	 * Space variable/ method is used to keep track of where the character should be
+	 */
 	public void moveLeftD(){
 		if(space % 10 == 1){
 			moveDown();
@@ -132,7 +188,11 @@ public class Character {
 		}
 		img.setBounds(this.getX(), this.getY(), w, h);
 	}
-	
+		/**
+	 * All methods after this one are
+	 * methods for the movement of the characters
+	 * Space variable/ method is used to keep track of where the character should be
+	 */
 	public void moveRightD(){
 		if(space % 10 == 1){
 			moveDown();
@@ -144,7 +204,11 @@ public class Character {
 		}
 		img.setBounds(this.getX(), this.getY(), w, h);
 	}
-
+	/**
+	 * All methods after this one are
+	 * methods for the movement of the characters
+	 * Space variable/ method is used to keep track of where the character should be
+	 */
 	public void moveWin(int dieNum){
 		if(space + dieNum < 100){
 			for (int j=0; j<dieNum; j++){

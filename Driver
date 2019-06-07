@@ -30,6 +30,11 @@ public class Driver extends JPanel implements ActionListener, MouseListener, Mou
 	
 	JFrame f;
 	
+	/**
+	 * establishes params and sets size of jframe
+	 * 
+	 */
+
 	public Driver() {
 		f = new JFrame();
 		f.setSize(1006, 1029);
@@ -78,72 +83,107 @@ public class Driver extends JPanel implements ActionListener, MouseListener, Mou
 	}
 	
 	@Override
+	/**
+	 * if button is pressed print command and establish screen
+	 * 
+	 */
+
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if(e.getSource() == startButton){
 			System.out.println("start the game");
 			game = new GameScreen();
 			f.dispose();
-		}
-		
-		/*
-		if(e.getSource() == quit){
-			System.exit(0);
-		}
-		*/
-	}
-	
-	
+
 	@Override
 	public void keyPressed(KeyEvent arg0) {
 		// TODO Auto-generated method stub
+		/**
+		 * key pressed method
+		 * 
+		 */
 
 	}
+
 	@Override
 	public void keyReleased(KeyEvent arg0) {
 		// TODO Auto-generated method stub
-		
+		/**
+		 * key released method
+		 * 
+		 */
 	}
+
 	@Override
 	public void keyTyped(KeyEvent arg0) {
 		// TODO Auto-generated method stub
-		
+		/**
+		 * key typed method
+		 * 
+		 */
 	}
+
 	@Override
 	public void mouseDragged(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		
+		/**
+		 * mouse dragged method
+		 * 
+		 */
 	}
+
 	@Override
 	public void mouseMoved(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		
+		/**
+		 * mouse moved method
+		 * 
+		 */
 	}
+
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		
+		/**
+		 * mouse clicked method
+		 * 
+		 */
 	}
+
 	@Override
 	public void mouseEntered(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		
+		/**
+		 * mouse entered method
+		 * 
+		 */
 	}
+
 	@Override
 	public void mouseExited(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		
+		/**
+		 * mouse exited method
+		 * 
+		 */
 	}
+
 	@Override
+	/**
+		 * mouse pressed method
+		 * 
+		 */
 	public void mousePressed(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		
-	}
+			}
+
 	@Override
 	public void mouseReleased(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		
+		/**
+		 * mouse released method
+		 * 
+		 */
 	}
-
 
 }

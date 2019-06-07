@@ -9,6 +9,10 @@ public class BlueCharacter extends Character{
 	private int space;
 	private int x,y,w,h;
 	
+	/**
+	 * constructor for blue char
+	 */
+
 	public BlueCharacter(String fname, int w, int h, int x, int y, int space) {
 		super(fname, w, h, x ,y, space);
 		

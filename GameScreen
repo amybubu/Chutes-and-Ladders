@@ -58,6 +58,11 @@ public class GameScreen extends JPanel implements ActionListener,
 
 	ArrayList<Coordinates> coordinates = new ArrayList<Coordinates>();
 
+	/**
+	 * inst game screen
+	 * 
+	 */
+
 	public GameScreen() {
 
 		// ladders

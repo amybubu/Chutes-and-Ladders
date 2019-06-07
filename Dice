@@ -38,37 +38,72 @@ public class Dice extends JPanel{
 		
 		img = new JLabel(charIcon);
 		img.setBounds(x, y, 100, 100);
-	}
-	
-	public int rollDice(){
-		num = (int)(Math.random()*(7 - 1)+ 1);
+/**
+ * 
+ *  setter for roll dice
+ */
+	public int rollDice() {
+		num = (int) (Math.random() * (7 - 1) + 1);
 		return num;
 	}
-	
-	public int getNum(){
+/**
+ * 
+ * setter for number
+ * @return
+ */
+	public int getNum() {
 		return num;
 	}
-	public int getX(){
+	/**
+	 * setter for x
+	 */
+
+	public int getX() {
 		return x;
 	}
-	public int getY(){
+	/**
+	 * setter for y
+	 */
+
+	public int getY() {
 		return y;
 	}
-	public int getRolled(){
+	/**
+	 * setter for rolled
+	 */
+
+	public int getRolled() {
 		return rolled;
 	}
-	public void setRolled(int newRolled){
+	/**
+	 * method for roll
+	 */
+
+	public void setRolled(int newRolled) {
 		rolled = newRolled;
 	}
-	public void setX(int newX){
+	/**
+	 * method for roll
+	 */
+	public void setX(int newX) {
 		x = newX;
 		img.setBounds(x, y, 100, 100);
 	}
-	public void setY(int newY){
+	/**
+	 * method for x
+	 */
+	public void setY(int newY) {
 		y = newY;
 		img.setBounds(x, y, 100, 100);
 	}
-	public JLabel getImg(){
+	/**
+	 * method for y
+	 */
+
+	public JLabel getImg() {
 		return img;
 	}
+	/**
+	 * method for img
+	 */
 }

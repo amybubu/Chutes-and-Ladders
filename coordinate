@@ -3,6 +3,9 @@ public class Coordinate {
 	int from;
 	int to;
 	
+	/**
+	 * constructor for coordinate class
+	 */
 	public Coordinate(int f, int t){
 		from = f;
 		to = t;

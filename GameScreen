@@ -19,6 +19,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.io.File;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -34,6 +35,8 @@ public class GameScreen extends JPanel implements ActionListener,
 	String screen = "Map.png";
 	JLabel background2;
 
+	public EndScreen end;
+
 	JFrame f;
 
 	String[] diePics = { "Dice1.png", "Dice2.png", "Dice3.png", "Dice4.png",
@@ -48,33 +51,35 @@ public class GameScreen extends JPanel implements ActionListener,
 			935, 1);
 	YellowCharacter yellow = new YellowCharacter("YellowChar.png", 50, 50, 55,
 			935, 1);
+
+	Character charac = new Character("", 0, 0, 0, 0, 0);
 	Dice die = new Dice(diePics[0]);
 	Dice die2[] = new Dice[6];
 
-        ArrayList<Coordinate> coordinates = new ArrayList<Coordinate>();
-	
+	ArrayList<Coordinates> coordinates = new ArrayList<Coordinates>();
+
 	public GameScreen() {
-		
-		//ladders
-		coordinates.add(new Coordinate(2, 38));
-		coordinates.add(new Coordinate(4, 14));
-		coordinates.add(new Coordinate(9, 31));
-		coordinates.add(new Coordinate(21, 42));
-		coordinates.add(new Coordinate(36, 58));
-		coordinates.add(new Coordinate(28, 84));
-		coordinates.add(new Coordinate(51, 67));
-		coordinates.add(new Coordinate(71, 92));
-		coordinates.add(new Coordinate(80, 98));
-		
-		//chutes
-		coordinates.add(new Coordinate(24, 7));
-		coordinates.add(new Coordinate(37, 26));
-		coordinates.add(new Coordinate(99, 12));
-		coordinates.add(new Coordinate(63, 60));
-		coordinates.add(new Coordinate(73, 50));
-		coordinates.add(new Coordinate(93, 75));
-		coordinates.add(new Coordinate(94, 85));
-		
+
+		// ladders
+		coordinates.add(new Coordinates(2, 38));
+		coordinates.add(new Coordinates(4, 14));
+		coordinates.add(new Coordinates(9, 31));
+		coordinates.add(new Coordinates(21, 42));
+		coordinates.add(new Coordinates(36, 58));
+		coordinates.add(new Coordinates(28, 84));
+		coordinates.add(new Coordinates(51, 67));
+		coordinates.add(new Coordinates(71, 92));
+		coordinates.add(new Coordinates(80, 98));
+
+		// chutes
+		coordinates.add(new Coordinates(24, 7));
+		coordinates.add(new Coordinates(37, 26));
+		coordinates.add(new Coordinates(99, 12));
+		coordinates.add(new Coordinates(63, 60));
+		coordinates.add(new Coordinates(73, 50));
+		coordinates.add(new Coordinates(93, 75));
+		coordinates.add(new Coordinates(94, 85));
+
 		f = new JFrame();
 		f.setSize(1006, 1029);
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -148,6 +153,8 @@ public class GameScreen extends JPanel implements ActionListener,
 
 	}
 
+	
+
 	@Override
 	public void keyPressed(KeyEvent arg0) {
 		// TODO Auto-generated method stub
@@ -163,13 +170,18 @@ public class GameScreen extends JPanel implements ActionListener,
 					die2[i].setX(10000);
 				}
 			}
+			
+			
 
 			// moves the blue character when it is your turn
 
-			if (blue.getSpace() <= 93) {
-				// moves the blue character when it is your turn
-				if (blue.getSpace() / 10 % 2 == 0) {
-					if (turn % 4 == 1) {
+
+			//sorry mr david
+			
+			if (blue.getSpace() / 10 % 2 == 0) {
+
+				if (turn % 4 == 1) {
+					if (blue.getSpace() <= 93) {
 						for (int i = 0; i < die.getNum(); i++) {
 							blue.moveRight();
 							temp--;
@@ -309,16 +321,17 @@ public class GameScreen extends JPanel implements ActionListener,
 					purple.moveWin(die.getNum());
 				}
 			}
+			
 
 			System.out.println("Blue Space:" + blue.getSpace());
 			System.out.println("Pink Space:" + pink.getSpace());
-			System.out.println("Purple Space:" + purple.getSpace());
 			System.out.println("Yellow Space:" + yellow.getSpace());
+			System.out.println("Purple Space:" + purple.getSpace());
 			System.out
 					.println("====================================================");
 			turn++;
-		
-		for (Coordinate c : coordinates) {
+
+			for (Coordinates c : coordinates) {
 				if (c.from < c.to) {
 					if (c.from == blue.getSpace()) {
 						for (int i = c.from; i < c.to; i++) {
@@ -397,9 +410,21 @@ public class GameScreen extends JPanel implements ActionListener,
 				}
 
 			}
-		
-		}
 
+		}
+		if (blue.getSpace() == 100){
+			
+		}
+		if(pink.getSpace() == 100){
+			
+		}
+		if(purple.getSpace() == 100){
+			
+		}
+		if(yellow.getSpace() == 100) {
+			end = new EndScreen();
+			f.dispose();
+		}
 		update();
 	}
 
